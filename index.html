@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#f5f7fb">
+  <meta name="description" content="Un espacio más sencillo para tus documentos. Une, divide, convierte y edita PDF con NheuDocs.">
+  <title>NheuDocs — Documentos, sin complicaciones.</title>
+  <link rel="icon" type="image/svg+xml" href="./assets/logo.svg">
+  <link rel="stylesheet" href="./styles.css">
+  <script src="./vendor/pdf-lib.min.js" defer></script>
+  <script src="./vendor/jszip.min.js" defer></script>
+  <script src="./vendor/piexif.js" defer></script>
+  <script src="./vendor/html2canvas.min.js" defer></script>
+  <script src="./vendor/zip-full.min.js" defer></script>
+  <script type="module" src="./js/app.js"></script>
+</head>
+<body>
+  <div class="ambient-background" aria-hidden="true"><div class="ambient ambient-one"></div><div class="ambient ambient-two"></div></div>
+  <header class="header glass">
+    <a class="brand" href="./" aria-label="NheuDocs, inicio"><img src="./assets/logo.svg" width="37" height="37" alt=""><span>Nheu<span class="brand-light">Docs</span></span></a>
+    <div class="product-switch" role="group" aria-label="Cambiar producto"><a href="?mode=docs" data-mode="docs" aria-label="Nheu Docs">Docs</a><a href="?mode=img" data-mode="img" aria-label="Nheu IMG">IMG</a><a href="?mode=zip" data-mode="zip" aria-label="ZipFusion">ZipFusion</a></div>
+    <label class="search glass"><span data-icon="search"></span><input id="search" type="search" placeholder="Buscar una herramienta…" aria-label="Buscar una herramienta"></label>
+    <div class="nav-actions"><button class="icon-button" id="theme" aria-label="Activar modo oscuro"></button><a class="nav-cta" href="./" id="catalog-link" hidden>Todas las herramientas</a></div>
+  </header>
+  <main>
+    <section id="tools" class="tools-section" aria-label="Herramientas PDF">
+      
+      <div class="filters" id="filters" aria-label="Filtrar herramientas"></div>
+      <div class="catalog-meta"><span id="result-count" aria-live="polite"></span><span><span class="local-dot"></span> Tus archivos permanecen en tu dispositivo</span></div>
+      <div class="tool-grid" id="tool-grid"></div>
+      <div id="empty" class="empty glass" hidden><h3>No encontramos esa herramienta.</h3><p>Prueba con «unir», «Word» o «imágenes».</p><button id="clear-search" class="secondary">Ver todas</button></div>
+    </section>
+  <section id="workspace" class="workspace" aria-labelledby="workspace-title" hidden>
+    <div class="workspace-header"><div class="tool-icon" id="workspace-icon"></div><div><div class="workspace-title-row"><h1 id="workspace-title"></h1><button type="button" id="tool-help" class="tool-help" aria-label="Información sobre esta herramienta" aria-haspopup="dialog" aria-controls="info-dialog" title="Cómo funciona">i</button></div><p id="workspace-description"></p></div></div>
+    <p id="tool-note" class="notice" hidden></p>
+    <p id="error" class="error" role="alert" hidden></p>
+    <div class="workspace-columns">
+      <div id="workspace-files">
+        <div id="dropzone" class="dropzone">
+          <button type="button" class="primary" id="choose-label">Seleccionar PDF</button>
+          <span>o suelta los archivos en cualquier parte de la página</span>
+          <small id="accepted-types">PDF · Sin límite fijo de peso</small>
+          <input id="file-input" type="file" hidden>
+        </div>
+    <ul id="file-list" class="file-list" aria-label="Archivos seleccionados"></ul>
+      </div>
+      <div id="workspace-controls" class="glass" hidden>
+    <div id="options" class="options"></div>
+    <div id="progress" class="progress" hidden><div><span id="progress-label">Preparando…</span><span id="progress-percent">0%</span></div><progress id="progress-bar" max="100" value="0"></progress></div>
+    <div id="result" class="result" aria-live="polite" hidden></div>
+    <div class="workspace-footer"><span id="processing-note"><span data-icon="lock"></span> Los archivos permanecen en este dispositivo</span><button id="run" class="primary" disabled>Continuar <span aria-hidden="true">→</span></button></div>
+      </div>
+    </div>
+    <div class="file-drag-overlay" aria-hidden="true"><span>Suéltalos aquí</span></div>
+  </section>
+  </main>
+  <footer><span>© 2026 NheuDocs</span><button id="privacy">Privacidad</button></footer>
+  <dialog id="info-dialog" class="info-dialog" aria-label="Información"><button class="icon-button close-info" aria-label="Cerrar"><span data-icon="close"></span></button><div id="info-content"></div></dialog>
+  <div id="toast" class="toast glass" role="status" hidden></div>
+</body>
+</html>
